@@ -103,4 +103,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 .idea
-local.py
+settings/local.py
