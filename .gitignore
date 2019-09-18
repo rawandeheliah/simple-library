@@ -104,4 +104,4 @@ venv.bak/
 .mypy_cache/
 .idea
 env
-/SimpleLibrary/settings/local.py
+settings/local.py
