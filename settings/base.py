@@ -1,7 +1,16 @@
 import os
 
-from service_urls.services import db, postgresql_config_from_url
-import service_urls.patch
+import dj_database_url
+
+
+def populate_hosts():
+    hosts = os.environ.get('ALLOWED_HOSTS')
+    hosts_list = []
+    for host in hosts.split(','):
+        hosts_list.append(host)
+    return hosts
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -15,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = populate_hosts()
 
 
 # Application definition
@@ -64,7 +73,8 @@ WSGI_APPLICATION = os.environ.get('WSGI_APPLICATION')
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
-    'default': 'postgres://postgres:1@localhost:5432/simple_library',
+    'default': dj_database_url.config(default='postgres://postgres:1@local'
+                                              'host:5432/simple_library'),
 }
 
 
