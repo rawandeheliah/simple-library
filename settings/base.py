@@ -1,5 +1,7 @@
 import os
 
+from service_urls.services import db, postgresql_config_from_url
+import service_urls.patch
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -13,7 +15,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,7 +40,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = os.environ.get('ROOT_URLCONF')
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -61,16 +63,8 @@ WSGI_APPLICATION = os.environ.get('WSGI_APPLICATION')
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('ENGINE'),
-        'USER': os.environ.get('USERNAME'),
-        'NAME': os.environ.get('DATABASE_NAME'),
-        'PASSWORD': os.environ.get('PASSWORD'),
-        'HOST': os.environ.get('HOST'),
-        'PORT': '5432',
-    }
+    'default': 'postgres://postgres:1@localhost:5432/simple_library',
 }
 
 

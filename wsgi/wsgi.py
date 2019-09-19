@@ -8,9 +8,10 @@ https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
 import os
+import service_urls.patch
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.local')
 
 application = get_wsgi_application()
