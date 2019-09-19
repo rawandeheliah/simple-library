@@ -3,8 +3,6 @@
 import os
 import sys
 
-import service_urls.patch
-
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.local')
