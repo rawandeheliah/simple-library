@@ -73,8 +73,7 @@ WSGI_APPLICATION = os.environ.get('WSGI_APPLICATION')
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgres:1@local'
-                                              'host:5432/simple_library'),
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL')),
 }
 
 
