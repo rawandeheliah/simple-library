@@ -2,14 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Author(models.Model):
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Author(BaseModel):
     name = models.CharField(max_length=50)
     date_of_birth = models.DateTimeField(null=True)
     date_of_death = models.DateTimeField(null=True)
     nationality = models.CharField(max_length=50, blank=True)
     place_of_birth = models.CharField(max_length=50, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -18,32 +24,26 @@ class Author(models.Model):
         return "catalog/authors/"
 
 
-class Genre(models.Model):
+class Genre(BaseModel):
     name = models.CharField(max_length=50)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
-class Language(models.Model):
+class Language(BaseModel):
     name = models.CharField(max_length=50)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
-class Book(models.Model):
+class Book(BaseModel):
     name = models.CharField(max_length=50)
     summary = models.TextField(blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     genres = models.ManyToManyField(Genre)
     languages = models.ManyToManyField(Language)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -52,7 +52,7 @@ class Book(models.Model):
         return "catalog/books/"
 
 
-class BookInstance(models.Model):
+class BookInstance(BaseModel):
     STATUS = (('a', 'available'),
               ('b', 'Reserved'),
               ('m', 'Maintenance'),
@@ -63,10 +63,6 @@ class BookInstance(models.Model):
     status = models.CharField(max_length=32, choices=STATUS,
                               default='Available')
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return '{} : {} language'.format(self.book.name, self.language)
-
-
