@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 import catalog
+try:
+    from django.conf.urls.defaults import url
+except ImportError:
+    from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^chaining/', include('smart_selects.urls')),
     path('catalog', include('catalog.urls')),
 ]

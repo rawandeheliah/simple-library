@@ -11,6 +11,9 @@ def populate_hosts():
     return hosts
 
 
+USE_DJANGO_JQUERY = True
+JQUERY_URL = False
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +33,7 @@ ALLOWED_HOSTS = populate_hosts()
 # Application definition
 
 INSTALLED_APPS = [
+    'smart_selects',
     'catalog.apps.CatalogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
