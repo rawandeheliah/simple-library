@@ -14,14 +14,17 @@ class AuthorAdmin(admin.ModelAdmin):
 
     def get_date_of_birth_(self, obj):
         if obj:
-            return obj.date_of_birth.date()
+            return obj.date_of_birth
 
     def get_date_of_death_(self, obj):
         if obj:
-            return obj.date_of_death.date()
+            return obj.date_of_death
+
+    get_date_of_birth_.short_description = "Date of birth"
+    get_date_of_death_.short_description = "Date of death"
 
     list_display = ['name', 'nationality', 'get_date_of_birth_',
-                    'get_date_of_death_','place_of_birth', 'created_at',
+                    'get_date_of_death_', 'place_of_birth', 'created_at',
                     'updated_on']
     list_filter = ['place_of_birth', 'nationality']
 
@@ -49,6 +52,7 @@ class BookAdmin(admin.ModelAdmin):
     def get_genres(self, obj):
         return ",".join([p.name for p in obj.genres.all()])
 
+    get_genres.short_description = "Geners"
     list_display = ['name', 'summary', 'get_genres', 'author', 'created_at',
                     'updated_on']
     list_filter = ['author__name', 'genres__name']
@@ -70,10 +74,12 @@ class BookInstanceAdmin(admin.ModelAdmin):
                                            'borrower', 'status')}),
     ]
 
-    def book_(self, obj):
+    def get_book(self, obj):
         if obj:
-            return  "\n".join([p.name for p in obj.book.all()])
-    list_display = ['status', 'book_', 'due_back_date', 'created_at',
+            return "\n".join([p.name for p in obj.book.all()])
+
+    get_book.short_description = "book"
+    list_display = ['status', 'get_book', 'due_back_date', 'created_at',
                     'updated_on', 'language', 'borrower']
     list_filter = ['borrower', 'status', 'language']
 
