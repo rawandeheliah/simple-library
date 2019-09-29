@@ -1,27 +1,28 @@
 from django.contrib import admin
-from smart_selects.form_fields import ChainedModelChoiceField
-from .models import Author, Book, Language, Genre, BookInstance,BookLanguage
+
+from .models import *
 
 
 class AuthorAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     fieldsets = [
-        (None,                            {'fields': ['name', 'nationality']}),
+        ('Author Info',                   {'fields': ['name', 'nationality']}),
         ('Author History',                {'fields': ['date_of_birth',
                                                       'date_of_death',
                                                       'place_of_birth']}),
       ]
 
-    def date_of_birth_(self, obj):
+    def get_date_of_birth_(self, obj):
         if obj:
             return obj.date_of_birth.date()
 
-    def date_of_death_(self, obj):
+    def get_date_of_death_(self, obj):
         if obj:
             return obj.date_of_death.date()
 
-    list_display = ['name', 'nationality', 'date_of_birth_', 'date_of_death_',
-                    'place_of_birth', 'created_at', 'updated_on']
+    list_display = ['name', 'nationality', 'get_date_of_birth_',
+                    'get_date_of_death_','place_of_birth', 'created_at',
+                    'updated_on']
     list_filter = ['place_of_birth', 'nationality']
 
 
@@ -41,14 +42,14 @@ class BookAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
 
     fieldsets = [
-        (None,               {'fields': ('name', 'summary', 'author')}),
+        ('Book Info',   {'fields': ('name', 'summary', 'author')}),
     ]
     inlines = [GenreInline, LanguageInline]
 
-    def genres_(self, obj):
+    def get_genres(self, obj):
         return ",".join([p.name for p in obj.genres.all()])
 
-    list_display = ['name', 'summary', 'genres_', 'author', 'created_at',
+    list_display = ['name', 'summary', 'get_genres', 'author', 'created_at',
                     'updated_on']
     list_filter = ['author__name', 'genres__name']
 
@@ -65,8 +66,8 @@ class GenreAdmin(admin.ModelAdmin):
 
 class BookInstanceAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ('book', 'due_back_date', 'language',
-                                         'borrower', 'status')}),
+        ('BookInstance Info',  {'fields': ('book', 'due_back_date', 'language',
+                                           'borrower', 'status')}),
     ]
 
     def book_(self, obj):
