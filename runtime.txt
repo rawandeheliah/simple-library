@@ -1,1 +1,1 @@
-python-3.7.2-stretch
+python-3.7.2
