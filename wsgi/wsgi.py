@@ -1,5 +1,5 @@
 """
-WSGI config for SimpleLibrary project.
+WSGI config for simple-library project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
