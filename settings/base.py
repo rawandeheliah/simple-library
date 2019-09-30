@@ -2,6 +2,8 @@ import os
 
 import dj_database_url
 
+import django_heroku
+
 
 def populate_hosts():
     hosts = os.environ.get('ALLOWED_HOSTS')
@@ -119,3 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+django_heroku.settings(locals())
