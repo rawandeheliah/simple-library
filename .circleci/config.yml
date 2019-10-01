@@ -52,4 +52,6 @@ jobs:
       - deploy:
           name : deployment
           command : |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git master
+            heroku maintenance:on --app still-tundra-14682
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git 7-auto-deployment-in-heroku:master
+      # this will be changed to dev-branch:master after the pull request is approved
