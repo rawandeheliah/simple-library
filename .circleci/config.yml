@@ -15,6 +15,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/postgres:9.4
 
+
     working_directory: ~/repos
 
     steps:
@@ -48,3 +49,7 @@ jobs:
           command: |
             source env/bin/activate
             tox -e py37
+      - deploy:
+          name : deployment
+          command : |
+            heroku maintenance:on --app still-tundra-14682
