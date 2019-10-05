@@ -55,6 +55,10 @@ jobs:
       - deploy:
           name : deployment
           command : |
-            heroku maintenance:on --app still-tundra-14682
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git 7-auto-deployment-in-heroku:master
+            if [ "${CIRCLE_BRANCH}" == “dev-branch” ]; then
+              heroku maintenance:on --app still-tundra-14682
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git 7-auto-deployment-in-heroku:master
+              heroku run "python manage.py migrate --noinput" --app circleci-demo-django
+              heroku maintenance:off --app circleci-demo-django
+            fi
       # this will be changed to dev-branch:master after the pull request is approved
