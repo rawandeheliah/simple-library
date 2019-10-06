@@ -24,5 +24,5 @@ except ImportError:
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^chaining/', include('smart_selects.urls')),
-    path('catalog', include('catalog.urls')),
+    path('catalog/', include('catalog.urls')),
 ]

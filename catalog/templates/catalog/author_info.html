@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    {{ author.name }}
+</p>
+<p>
+    {{ author.date_of_birth }}
+</p>
+<p>
+    {{ author.date_of_death }}
+</p>
+<p>
+    {{ author.nationality }}
+</p>
+<p>
+    {{ author.place_of_birth }}
+</p>
+
+<p>
+    <h2>books written by {{ author.name }} </h2>
+    <ul>
+    {%  for p in author.book_set.all %}
+    <li> {{ p.name }}</li>
+    {% endfor %}
+    </ul>
+
+</p>
+
+</body>
+</html>
