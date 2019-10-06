@@ -61,4 +61,3 @@ jobs:
               heroku run "python manage.py migrate --noinput" --app circleci-demo-django
               heroku maintenance:off --app circleci-demo-django
             fi
-      # this will be changed to dev-branch:master after the pull request is approved
