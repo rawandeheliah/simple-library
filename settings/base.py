@@ -58,7 +58,7 @@ ROOT_URLCONF = 'urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/Users/mac/repos/simple-library/catalog/templates/catalog'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
