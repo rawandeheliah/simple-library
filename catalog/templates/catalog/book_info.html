@@ -22,31 +22,9 @@
 
 </p>
 
-<p>
-    <h2>languages available for this book </h2>
-    <ul>
-    {%  for p in book.languages.all %}
-    <li> {{ p.name }}</li>
-        <ul>
-    {%  for pp in book.bookinstance_set.all %}
-            {% if p.name == pp.language.name %}
-            <li> {{ pp.due_back_date }} {{pp.language}}</li>
-            {% if pp.status == 'a' %}
-                <button>reserve</button>
-            {% endif %}
-            {% endif %}
-    {% endfor %}
-        </ul>
 
-
-
-    {% endfor %}
-    </ul>
-
-</p>
 
 <p>
-    hi
     <ul>
 
     {% for key, values in lang.items %}
