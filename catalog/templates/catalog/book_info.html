@@ -48,10 +48,19 @@
 <p>
     hi
     <ul>
-    {%  for pp in book.bookinstance_set.all %}
-    <li> {{ pp.due_back_date }} {{pp.language}}</li>
+
+    {% for key, values in lang.items %}
+    <h2>{{key}}</h2>
+    {% for v in values %}
+    <li> {{ v.language }} </li>
+    {% if v.status == 'a' %}
+                <button>reserve</button>
+    {% endif %}
     {% endfor %}
-     </ul>
+    {% endfor %}
+
+    </ul>
+
 
 </p>
 

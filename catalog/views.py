@@ -1,11 +1,6 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from .models import Author, Genre, Language, Book, BookInstance
-from django.http import Http404
-from django.urls import reverse
 from django.views import generic
-from django.utils import timezone
-from django.core.paginator import Paginator
+
+from .models import Author, Book, BookInstance
 
 
 class IndexView(generic.TemplateView):
@@ -44,6 +39,16 @@ class AuthorView(generic.ListView):
 class BookDetailView(generic.DetailView):
     model = Book
     template_name = 'catalog/book_info.html'
+
+    def get_context_data(self, *args, **kwargs):
+        group_by_value = {}
+        context = super(BookDetailView, self).get_context_data(*args, **kwargs)
+        context['book'] = self.object
+        for j in self.object.languages.all():
+            group_by_value[j] = self.object.bookinstance_set.filter(language=j)
+
+        context['lang'] = group_by_value
+        return context
 
 
 class AuthorDetailView(generic.DetailView):
