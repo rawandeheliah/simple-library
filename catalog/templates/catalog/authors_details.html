@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Authors List{% endblock %}
+
+{% block content %}
 {% if authorList %}
   <ul>
     {% for author in authorList %}
@@ -29,6 +27,4 @@
 {% else %}
     <p>No authors are available.</p>
 {% endif %}
-
-</body>
-</html>
+{% endblock %}

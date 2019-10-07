@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>hello world</p>
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
 <ul>
     <li>{{ book_count }} books numbers</li>
     <li>{{ copies_count }} copies numbers</li>
     <li>{{ copies_available_count}} available copies numbers</li>
     <li>{{ Authors_count}} author numbers</li>
 </ul>
-</body>
-</html>
+{% endblock %}
