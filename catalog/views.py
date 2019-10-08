@@ -1,3 +1,5 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 from django.views import generic
 
 from .models import (Author, Book, BookInstance)
@@ -56,3 +58,13 @@ class BookDetailView(generic.DetailView):
 class AuthorDetailView(generic.DetailView):
     model = Author
     template_name = 'catalog/author_info.html'
+
+
+class SignUp(generic.edit.FormView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
+
+    def form_valid(self, form):
+        form.save()
+        return super(SignUp, self).form_valid(form)

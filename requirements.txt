@@ -3,3 +3,4 @@ gunicorn
 django-heroku
 django-smart-selects
 django-bootstrap4
+sendgrid
