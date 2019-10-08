@@ -1,6 +1,6 @@
 from django.views import generic
 
-from .models import Author, Book, BookInstance
+from .models import (Author, Book, BookInstance)
 
 
 class IndexView(generic.TemplateView):
@@ -8,11 +8,13 @@ class IndexView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['book_count'] = Book.objects.count()
-        context['copies_count'] = BookInstance.objects.count()
-        context['copies_available_count'] = BookInstance.objects.filter(
+        books = Book.objects.select_related('author').all()
+        copies = BookInstance.objects
+        context['book_count'] = books.count()
+        context['copies_count'] = copies.count()
+        context['copies_available_count'] = copies.filter(
             status='a').count()
-        context['Authors_count'] = Author.objects.count()
+        context['authors_count'] = books.values('author').distinct().count()
         return context
 
 
@@ -45,7 +47,7 @@ class BookDetailView(generic.DetailView):
         context = super(BookDetailView, self).get_context_data(*args, **kwargs)
         context['book'] = self.object
         for j in self.object.languages.all():
-            group_by_value[j] = self.object.bookinstance_set.filter(language=j)
+            group_by_value[j] = self.object.bookInstances.filter(language=j)
 
         context['lang'] = group_by_value
         return context

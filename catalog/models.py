@@ -76,8 +76,10 @@ class BookInstance(BaseModel):
         horizontal=True,
         verbose_name='book',
         chained_field="language",
-        chained_model_field="languages")
-    borrower = models.ForeignKey(User, on_delete=models.CASCADE, null=True,
+        chained_model_field="languages",
+        related_name="bookInstances",
+    )
+    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,
                                  blank=True)
     status = models.CharField(max_length=32, choices=STATUS,
                               default='Available')

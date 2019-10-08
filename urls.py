@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-import catalog
+
 try:
     from django.conf.urls.defaults import url
 except ImportError:
