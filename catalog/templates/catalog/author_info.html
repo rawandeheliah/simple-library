@@ -20,12 +20,12 @@
 </p>
 
 <p>
-    <h2>books written by {{ author.name }} </h2>
-    <ul>
-    {%  for p in author.book_set.all %}
+<h2>books written by {{ author.name }} </h2>
+<ul>
+    {% for p in author.book_set.all %}
     <li> {{ p.name }}</li>
     {% endfor %}
-    </ul>
+</ul>
 
 </p>
 {% endblock %}

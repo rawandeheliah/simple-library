@@ -12,31 +12,30 @@
     {{ book.author }}
 </p>
 <p>
-    <h2>genres available for this book </h2>
-    <ul>
-    {%  for p in book.genres.all %}
+<h2>genres available for this book </h2>
+<ul>
+    {% for p in book.genres.all %}
     <li> {{ p.name }}</li>
     {% endfor %}
-    </ul>
+</ul>
 
 </p>
 
 
-
 <p>
-    <ul>
+<ul>
 
     {% for key, values in lang.items %}
     <h2>{{key}}</h2>
     {% for v in values %}
-    <li> {{ v.language }} </li>
+    <li> {{ v.language }}</li>
     {% if v.status == 'a' %}
-                <button>reserve</button>
+    <button>reserve</button>
     {% endif %}
     {% endfor %}
     {% endfor %}
 
-    </ul>
+</ul>
 
 
 </p>
