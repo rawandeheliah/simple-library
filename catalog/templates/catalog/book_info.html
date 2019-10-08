@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Book information{% endblock %}
+
+{% block content %}
+
+<h1>{{ book.name }}</h1>
+<p>
+    {{ book.summary }}
+</p>
+<p>
+    {{ book.author }}
+</p>
+<p>
+<h2>genres available for this book </h2>
+<ul>
+    {% for p in book.genres.all %}
+    <li> {{ p.name }}</li>
+    {% endfor %}
+</ul>
+
+</p>
+
+
+<p>
+<ul>
+
+    {% for key, values in lang.items %}
+    <h2>{{key}}</h2>
+    {% for v in values %}
+    <li> {{ v.language }}</li>
+    {% if v.status == 'a' %}
+    <button>reserve</button>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+</ul>
+
+
+</p>
+{% endblock %}

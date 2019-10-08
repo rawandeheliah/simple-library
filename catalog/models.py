@@ -49,6 +49,9 @@ class Book(BaseModel):
     def __str__(self):
         return self.name
 
+    def projects(self):
+        return self.bookinstance_set()
+
     def get_absolute_url(self):
         return "catalog/books/"
 
@@ -62,7 +65,7 @@ class BookLanguage(models.Model):
 
 
 class BookInstance(BaseModel):
-    STATUS = (('a', 'available'),
+    STATUS = (('a', 'Available'),
               ('b', 'Reserved'),
               ('m', 'Maintenance'),
               ('ol', 'On Loan'))
@@ -73,8 +76,11 @@ class BookInstance(BaseModel):
         horizontal=True,
         verbose_name='book',
         chained_field="language",
-        chained_model_field="languages")
-    borrower = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+        chained_model_field="languages",
+        related_name="bookInstances",
+    )
+    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,
+                                 blank=True)
     status = models.CharField(max_length=32, choices=STATUS,
                               default='Available')
 

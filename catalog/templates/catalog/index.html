@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<ul>
+    <li>{{ book_count }} books numbers</li>
+    <li>{{ copies_count }} copies numbers</li>
+    <li>{{ copies_available_count}} available copies numbers</li>
+    <li>{{ authors_count }} author numbers</li>
+</ul>
+{% endblock %}
