@@ -105,5 +105,4 @@ venv.bak/
 .idea
 env
 settings/local.py
-smart_selects
-sent_emails
+.DS_Store
