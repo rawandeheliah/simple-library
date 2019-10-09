@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^chaining/', include('smart_selects.urls')),
     path('catalog/', include('catalog.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

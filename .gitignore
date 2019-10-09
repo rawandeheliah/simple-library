@@ -105,4 +105,4 @@ venv.bak/
 .idea
 env
 settings/local.py
-smart_selects
+.DS_Store
