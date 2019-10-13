@@ -1,0 +1,14 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}Reserve Book{% endblock %}
+
+{% block content %}
+<h1>hello there!</h1>
+<h2>please add the due back date to reserve {{ book }} book</h2>
+<h2>This copy of {{ book }} is {{ book_language }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

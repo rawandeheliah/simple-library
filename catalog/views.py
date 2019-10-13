@@ -1,11 +1,14 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib.auth.mixins import (PermissionRequiredMixin, LoginRequiredMixin)
 
 from .models import (Author, Book, BookInstance)
+from .forms import (ReserveBookForm, CreateBookForm, CreateAuthorForm)
 
 
-class IndexView(generic.TemplateView):
+class IndexView(LoginRequiredMixin, generic.TemplateView):
+    login_url = '/accounts/login/'
     template_name = 'catalog/index.html'
 
     def get_context_data(self, **kwargs):
@@ -20,7 +23,8 @@ class IndexView(generic.TemplateView):
         return context
 
 
-class BookView(generic.ListView):
+class BookView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = Book
     template_name = 'catalog/books_details.html'
     context_object_name = 'bookList'
@@ -30,7 +34,8 @@ class BookView(generic.ListView):
         return Book.objects.filter().order_by('created_at')
 
 
-class AuthorView(generic.ListView):
+class AuthorView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = Author
     template_name = 'catalog/authors_details.html'
     context_object_name = 'authorList'
@@ -40,7 +45,8 @@ class AuthorView(generic.ListView):
         return Author.objects.filter().order_by('created_at')
 
 
-class BookDetailView(generic.DetailView):
+class BookDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/accounts/login/'
     model = Book
     template_name = 'catalog/book_info.html'
 
@@ -54,8 +60,13 @@ class BookDetailView(generic.DetailView):
         context['lang'] = group_by_value
         return context
 
+    def form_valid(self, form):
 
-class AuthorDetailView(generic.DetailView):
+        pass
+
+
+class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/accounts/login/'
     model = Author
     template_name = 'catalog/author_info.html'
 
@@ -68,3 +79,46 @@ class SignUp(generic.edit.FormView):
     def form_valid(self, form):
         form.save()
         return super(SignUp, self).form_valid(form)
+
+
+class BookReserveView(LoginRequiredMixin, generic.edit.UpdateView):
+    login_url = '/accounts/login/'
+    model = BookInstance
+    form_class = ReserveBookForm
+    success_url = reverse_lazy('catalog:book')
+    template_name = 'catalog/reserveBook.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(BookReserveView, self).get_context_data(*args, **kwargs)
+        context['book_language'] = self.request.GET['book_language']
+        context['book'] = self.request.GET['book_name']
+        return context
+
+    def form_valid(self, form):
+        book_instance = form.save(commit=False)
+        book_instance.borrower = self.request.user
+        book_instance.status = 'b'
+        book_instance.save()
+
+        return super(BookReserveView, self).form_valid(form)
+
+
+class BookReserveCompleteView(LoginRequiredMixin, generic.RedirectView):
+    login_url = '/accounts/login/'
+    template_name = 'catalog/bookReserveCompletion.html'
+
+
+class CreateBook(PermissionRequiredMixin, generic.edit.CreateView):
+    permission_required = 'book.can_publish_book'
+    model = Book
+    form_class = CreateBookForm
+    template_name = 'catalog/createBook.html'
+    success_url = reverse_lazy('catalog:book')
+
+
+class CreateAuthor(PermissionRequiredMixin, generic.edit.CreateView):
+    permission_required = 'author.can_publish_author'
+    model = Author
+    form_class = CreateAuthorForm
+    template_name = 'catalog/createAuthor.html'
+    success_url = reverse_lazy('catalog:author')
