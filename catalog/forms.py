@@ -1,5 +1,6 @@
-from django import forms
 import datetime
+
+from django import forms
 
 from .models import (BookInstance, Book, Author, Genre, Language)
 
@@ -41,11 +42,9 @@ class CreateAuthorForm(forms.ModelForm):
                   'place_of_birth')
 
     YEARS = [x for x in range(1500, 2021)]
-    date_of_birth = forms.DateField(label="date_of_birth",
-                                    widget=forms.SelectDateWidget(years=YEARS),
+    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years=YEARS),
                                     required=True)
-    date_of_death = forms.DateField(label="date_of_death",
-                                    widget=forms.SelectDateWidget(years=YEARS),
+    date_of_death = forms.DateField(widget=forms.SelectDateWidget(years=YEARS),
                                     required=True)
 
     def clean_date_of_death(self):

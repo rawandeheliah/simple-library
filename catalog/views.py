@@ -88,9 +88,6 @@ class BookReserveView(LoginRequiredMixin, generic.edit.UpdateView):
     success_url = reverse_lazy('catalog:book')
     template_name = 'catalog/reserveBook.html'
 
-    def dispatch(self, *args, **kwargs):
-        return super(BookReserveView, self).dispatch(*args, **kwargs)
-
     def get_context_data(self, *args, **kwargs):
         context = super(BookReserveView, self).get_context_data(*args, **kwargs)
         context['book_language'] = self.request.GET['book_language']
