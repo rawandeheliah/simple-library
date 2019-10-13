@@ -30,7 +30,13 @@
     {% for v in values %}
     <li> {{ v.language }}</li>
     {% if v.status == 'a' %}
+    <form action="{% url 'catalog:bookReserve' v.id %}" method="get">{% csrf_token %}
+        <input type="hidden" name="book_id" value="{{book.id}}" />
+        <input type="hidden" name="book_name" value="{{book.name}}" />
+        <input type="hidden" name="book_language" value="{{v.language}}" />
+        <input type="hidden" name="language_id" value="{{v.language.id}}" />
     <button>reserve</button>
+    </form>
     {% endif %}
     {% endfor %}
     {% endfor %}

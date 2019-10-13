@@ -6,8 +6,7 @@
 {% if authorList %}
 <ul>
     {% for author in authorList %}
-    <li><a href="{% url 'catalog:authorDetail' author.id %}">{{ author.name
-        }}</a></li>
+    <li><a href="{% url 'catalog:authorDetail' author.id %}">{{ author.name }}</a></li>
     {% endfor %}
 </ul>
 {% if is_paginated %}
