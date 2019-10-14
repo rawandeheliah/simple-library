@@ -31,6 +31,7 @@ ALLOWED_HOSTS = populate_hosts()
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
     'smart_selects',
     'catalog.apps.CatalogConfig',
     'django.contrib.admin',
@@ -52,6 +53,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'urls'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'catalog/static'),
+)
 
 TEMPLATES = [
     {

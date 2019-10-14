@@ -1,12 +1,16 @@
 {% extends 'registration/base.html' %}
 
 {% block title %}LogIn{% endblock %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
 {% block content %}
 <h2>Login</h2>
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+   {% bootstrap_form form  %}
+
   <button type="submit">Login</button>
 </form>
 <p><a href="{% url 'password_reset' %}">reset password</a></p>

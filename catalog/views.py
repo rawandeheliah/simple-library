@@ -125,7 +125,8 @@ class CreateAuthor(PermissionRequiredMixin, generic.edit.CreateView):
     success_url = reverse_lazy('catalog:author')
 
 
-class SearchResultsView(generic.ListView):
+class SearchResultsView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = Book
     template_name = 'catalog/search_results.html'
     context_object_name = 'result_lists'
@@ -135,22 +136,14 @@ class SearchResultsView(generic.ListView):
         return Book.objects.filter(name__icontains=query)
 
 
-class BorrowedListView(PermissionRequiredMixin, generic.ListView):
+class BorrowedListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = BookInstance
-    flag = False
     template_name = 'catalog/borrowed_results.html'
     context_object_name = 'borrowed_lists'
 
-    def dispatch(self, *args, **kwargs):
-        if self.request.user.has_perm('bookinstance.view_all_instances'):
-            self.flag = True
-        else:
-            self.flag = False
-
-        return super(PermissionRequiredMixin, self).dispatch(*args, **kwargs)
-
     def get_queryset(self):
-        if self.flag:
+        if self.request.user.has_perm('bookinstance.view_all_instances'):
             return BookInstance.objects.filter(status='b')
         else:
             return BookInstance.objects.filter(borrower=self.request.user)
