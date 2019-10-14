@@ -80,12 +80,15 @@ class BookInstance(BaseModel):
               ('m', 'Maintenance'),
               ('ol', 'On Loan'))
 
+    class Meta:
+        permissions = (("view_all_instances", "Can view all instances"),)
+
     def validate_date(date):
         if date <= timezone.now().date():
             raise ValidationError("Date cannot be in the past or today!")
 
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    due_back_date = models.DateField(null=True, validators=[validate_date])
+    due_back_date = models.DateField(blank=True, null=True, validators=[validate_date])
     book = ChainedManyToManyField(
         Book,
         horizontal=True,

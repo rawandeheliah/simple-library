@@ -74,7 +74,7 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
 class SignUp(generic.edit.FormView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'signup.html'
+    template_name = 'registration/signup.html'
 
     def form_valid(self, form):
         form.save()
@@ -92,6 +92,7 @@ class BookReserveView(LoginRequiredMixin, generic.edit.UpdateView):
         context = super(BookReserveView, self).get_context_data(*args, **kwargs)
         context['book_language'] = self.request.GET['book_language']
         context['book'] = self.request.GET['book_name']
+        context['book_instance'] = self.object
         return context
 
     def form_valid(self, form):
@@ -122,3 +123,35 @@ class CreateAuthor(PermissionRequiredMixin, generic.edit.CreateView):
     form_class = CreateAuthorForm
     template_name = 'catalog/createAuthor.html'
     success_url = reverse_lazy('catalog:author')
+
+
+class SearchResultsView(generic.ListView):
+    model = Book
+    template_name = 'catalog/search_results.html'
+    context_object_name = 'result_lists'
+
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        return Book.objects.filter(name__icontains=query)
+
+
+class BorrowedListView(PermissionRequiredMixin, generic.ListView):
+    model = BookInstance
+    flag = False
+    template_name = 'catalog/borrowed_results.html'
+    context_object_name = 'borrowed_lists'
+
+    def dispatch(self, *args, **kwargs):
+        if self.request.user.has_perm('bookinstance.view_all_instances'):
+            self.flag = True
+        else:
+            self.flag = False
+
+        return super(PermissionRequiredMixin, self).dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        if self.flag:
+            return BookInstance.objects.filter(status='b')
+        else:
+            return BookInstance.objects.filter(borrower=self.request.user)
+

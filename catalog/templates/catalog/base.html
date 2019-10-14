@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <title>{% block title %}Simple Library{% endblock %}</title>
 </head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'catalog/sidebar.css' %}">
 <body>
+<form class="searchbar" action="{% url 'catalog:searchBook' %}" method="get">
+  <input name="search" type="text" placeholder="Search...">
+</form>
 <main>
+    <div class="sidenav">
+        <p>{{ user.username }}</p>
+        <a href="{% url 'catalog:borrowed' %}">Borrowed books</a>
+		<a href="{% url 'catalog:index' %}">Homepage</a>
+		<a href="{% url 'catalog:author' %}">All authors</a>
+		<a href="{% url 'catalog:book' %}">All books</a>
+        <a href="{% url 'logout' %}">logout</a>
+	</div>
+    <div  class="main">
 
-    Hi {{ user.username }}!
     {% block content %}
     {% endblock %}
-    <p><a href="{% url 'logout' %}">logout</a></p>
+    </div>
+
 
 </main>
 

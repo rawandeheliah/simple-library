@@ -131,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 LOGIN_REDIRECT_URL = '/catalog'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/catalog'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 

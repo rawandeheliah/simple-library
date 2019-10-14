@@ -1,0 +1,17 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}Books List Page{% endblock %}
+
+{% block content %}
+<ul>
+    {% for book in borrowed_lists %}
+    <li>
+    {% for b in book.book.all%}
+    {{b.name}}
+    {% endfor %}
+    : language: {{ book.language }} , due back date: {{book.due_back_date}}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
