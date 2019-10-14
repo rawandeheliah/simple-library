@@ -3,6 +3,7 @@
 {% block title %}Reserve Book{% endblock %}
 
 {% block content %}
+{% if  book_instance.status  == 'a' %}
 <h1>hello there!</h1>
 <h2>please add the due back date to reserve {{ book }} book</h2>
 <h2>This copy of {{ book }} is {{ book_language }}</h2>
@@ -11,4 +12,7 @@
     {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+{% else %}
+<h1> You can't reserve this copy ! SORRY! but it is unavailable !</h1>
+{% endif %}
 {% endblock %}

@@ -20,4 +20,8 @@ urlpatterns = [
          name='createBook'),
     path('authors/create/', views.CreateAuthor.as_view(),
          name='createAuthor'),
+    path('search', views.SearchResultsView.as_view(),
+         name='searchBook'),
+    path('borrowed/', views.BorrowedListView.as_view(), name='borrowed'),
+
 ]
