@@ -1,17 +1,29 @@
 {% extends 'registration/base.html' %}
 
 {% block title %}LogIn{% endblock %}
+{% load static %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
+{% bootstrap_javascript jquery=True %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
+
+<link rel="stylesheet" type="text/css" href="{% static '/catalog/login_page.css' %}">
+<div id="container">
+<div id="title">Simple Library</div>
+<div class="gray_block">
+<h2 class="insidediv frominside">Login</h2>
+<form  method="post">
   {% csrf_token %}
    {% bootstrap_form form  %}
-
-  <button type="submit">Login</button>
+     {% buttons %}
+  <button class="insidediv btn btn-success" type="submit">Login</button>
+      {% endbuttons %}
 </form>
-<p><a href="{% url 'password_reset' %}">reset password</a></p>
+
+<p id="linkdiv"><a href="{% url 'password_reset' %}">reset password</a></p>
+    <p id="linkdiv"><a href="{% url 'catalog:signup' %}">Do not have account?signup</a></p>
+    <p></p>
+    </div>
+    </div>
 {% endblock %}
