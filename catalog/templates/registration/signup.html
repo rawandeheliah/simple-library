@@ -2,11 +2,23 @@
 
 {% block title %}Sign Up{% endblock %}
 
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
+
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/catalog/common.css' %}">
+<div class="bigger_div">
+<div class="container midpage">
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    {% bootstrap_form form  %}
+    {% buttons %}
+    <button class="btn btn-success btn-lg" type="submit">Sign up</button>
+     {% endbuttons %}
   </form>
+</div>
+</div>
 {% endblock %}

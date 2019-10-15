@@ -2,10 +2,20 @@
 
 {% block title %} Create an author {% endblock %}
 
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
+
+
 {% block content %}
+    <div class="col-sm-8">
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
+       {% bootstrap_form form  %}
+     {% buttons %}
+    <input class="btn btn-success btn-lg"  type="submit" value="Submit">
+              {% endbuttons %}
 </form>
+    </div>
 {% endblock %}

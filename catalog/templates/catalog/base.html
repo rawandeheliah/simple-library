@@ -5,19 +5,23 @@
     <title>{% block title %}Simple Library{% endblock %}</title>
 </head>
 {% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
 <link rel="stylesheet" type="text/css" href="{% static 'catalog/sidebar.css' %}">
 <body>
-<form class="searchbar" action="{% url 'catalog:searchBook' %}" method="get">
-  <input name="search" type="text" placeholder="Search...">
+<div class="topnav">
+<form  action="{% url 'catalog:searchBook' %}" method="get">
+  <input id="search_filed" name="search" type="text" placeholder="Search...">
 </form>
-<main>
+</div>
     <div class="sidenav">
         <p>{{ user.username }}</p>
         <a href="{% url 'catalog:borrowed' %}">Borrowed books</a>
 		<a href="{% url 'catalog:index' %}">Homepage</a>
 		<a href="{% url 'catalog:author' %}">All authors</a>
 		<a href="{% url 'catalog:book' %}">All books</a>
-        <a href="{% url 'logout' %}">logout</a>
+        <a id ="logout" href="{% url 'logout' %}">logout</a>
 	</div>
     <div  class="main">
 
@@ -26,7 +30,7 @@
     </div>
 
 
-</main>
+
 
 </body>
 </html>

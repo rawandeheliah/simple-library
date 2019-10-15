@@ -1,0 +1,14 @@
+
+
+.midpage{
+position: relative;
+background: rgba(255, 255, 255, 0.3);
+filter: alpha(opacity=50);
+height:100%
+
+
+}
+.bigger_div{
+height:100%;
+top:30px;
+}
