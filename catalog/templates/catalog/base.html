@@ -1,13 +1,16 @@
+
 <!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Simple Library{% endblock %}</title>
 </head>
-{% load static %}
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery=True %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'catalog/sidebar.css' %}">
 <body>
 <div class="topnav">

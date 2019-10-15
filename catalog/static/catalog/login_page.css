@@ -1,5 +1,4 @@
 
-{% load static %}
 html, body,main {
     background: url("login_background.png") 100% 0 no-repeat fixed;
     margin: 0;
