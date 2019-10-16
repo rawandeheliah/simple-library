@@ -147,7 +147,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'catalog.storage_backends.MediaStorage'
 STATICFILES_LOCATION = 'static'
 
-STATIC_URL = 'static'
+STATIC_URL = 'static/'
 STATIC_ROOT = 'https://still-tundra-14682.s3.amazonaws.com/static/'
 LOGIN_REDIRECT_URL = '/catalog'
 LOGOUT_REDIRECT_URL = '/catalog'
