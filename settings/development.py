@@ -3,7 +3,7 @@ import django_heroku
 
 
 ALLOWED_HOSTS = ['https://still-tundra-14682.herokuapp.com']
-DEBUG = False
+DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
