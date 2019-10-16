@@ -147,7 +147,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'catalog.storage_backends.MediaStorage'
 STATICFILES_LOCATION = 'static'
 
-
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 LOGIN_REDIRECT_URL = '/catalog'
 LOGOUT_REDIRECT_URL = '/catalog'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
