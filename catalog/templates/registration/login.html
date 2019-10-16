@@ -1,14 +1,14 @@
 {% extends 'registration/base.html' %}
 
 {% block title %}LogIn{% endblock %}
-
+{% load staticfiles %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=True %}
-% load staticfiles %}
+
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="{% static '/catalog/login_page.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'catalog/login_page.css' %}">
 <div id="container">
 <div id="title">Simple Library</div>
 <div class="gray_block">

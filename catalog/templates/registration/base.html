@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <title>{% block title %}Simple Library{% endblock %}</title>
 </head>
-% load staticfiles %}
+{% load staticfiles %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=True %}
-
-<link rel="stylesheet" type="text/css" href="{% static '/catalog/login_page.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'catalog/login_page.css' %}">
 <body>
 <main>
     {% block content %}
