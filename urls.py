@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.static import serve
+from settings import base
 
 try:
     from django.conf.urls.defaults import url
@@ -26,4 +28,5 @@ urlpatterns = [
     url(r'^chaining/', include('smart_selects.urls')),
     path('catalog/', include('catalog.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+url(r'^static/(?P<path>.*)$', serve,{'document_root': base.STATIC_ROOT}),
 ]
