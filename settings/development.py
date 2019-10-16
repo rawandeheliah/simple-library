@@ -4,7 +4,7 @@ import django_heroku
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'catalog.storage_backends.MediaStorage'
 
-ALLOWED_HOSTS = ['still-tundra-14682.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
