@@ -4,3 +4,6 @@ django-heroku
 django-smart-selects
 django-bootstrap4
 sendgrid
+boto3
+django-storages
+whitenoise
