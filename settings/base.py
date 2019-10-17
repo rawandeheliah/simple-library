@@ -3,14 +3,6 @@ import os
 import dj_database_url
 
 
-def populate_hosts():
-    hosts = os.environ.get('ALLOWED_HOSTS')
-    hosts_list = []
-    for host in hosts.split(','):
-        hosts_list.append(host)
-    return hosts
-
-
 USE_DJANGO_JQUERY = True
 JQUERY_URL = False
 
@@ -26,8 +18,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = populate_hosts()
-
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
