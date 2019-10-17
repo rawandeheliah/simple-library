@@ -149,7 +149,7 @@ DEFAULT_FILE_STORAGE = 'catalog.storage_backends.MediaStorage'
 STATICFILES_LOCATION = 'static/'
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'https://still-tundra-14682.s3.amazonaws.com/static/'
+STATIC_ROOT = 'still-tundra-14682.s3.amazonaws.com/static/'
 LOGIN_REDIRECT_URL = '/catalog'
 LOGOUT_REDIRECT_URL = '/catalog'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
