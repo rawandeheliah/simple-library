@@ -1,0 +1,54 @@
+
+html, body,main {
+    background: url("login_background.png") 100% 0 no-repeat fixed;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+
+}
+
+
+#container{
+position: absolute;
+top: 20%;
+left: 31%;
+margin: 0;
+    padding: 0;
+
+}
+#title{
+position: relative;
+margin: 0;
+font-size:80px;
+
+    margin-right: -50%;
+color: #FFFFFF;
+
+}
+
+.gray_block{
+position: relative;
+font-size:30px;
+    background: rgba(122, 129, 139, 0.5);
+  filter: alpha(opacity=50);
+
+
+}
+
+.frominside{
+font-size:50px;
+color: #FFFFFF;
+}
+
+.insidediv{
+
+margin-left: 35%;
+}
+
+#linkdiv{
+
+margin-left: 28%;
+
+font-size:20px;
+
+}

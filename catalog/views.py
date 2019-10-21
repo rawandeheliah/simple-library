@@ -70,6 +70,11 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Author
     template_name = 'catalog/author_info.html'
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(AuthorDetailView, self).get_context_data(*args, **kwargs)
+        context['author'] = self.object
+        return context
+
 
 class SignUp(generic.edit.FormView):
     form_class = UserCreationForm
@@ -110,7 +115,7 @@ class BookReserveCompleteView(LoginRequiredMixin, generic.RedirectView):
 
 
 class CreateBook(PermissionRequiredMixin, generic.edit.CreateView):
-    permission_required = 'book.can_publish_book'
+    permission_required = 'catalog.can_publish_book'
     model = Book
     form_class = CreateBookForm
     template_name = 'catalog/createBook.html'
@@ -118,7 +123,7 @@ class CreateBook(PermissionRequiredMixin, generic.edit.CreateView):
 
 
 class CreateAuthor(PermissionRequiredMixin, generic.edit.CreateView):
-    permission_required = 'author.can_publish_author'
+    permission_required = 'catalog.can_publish_author'
     model = Author
     form_class = CreateAuthorForm
     template_name = 'catalog/createAuthor.html'
