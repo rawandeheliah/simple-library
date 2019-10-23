@@ -54,7 +54,8 @@ class MyTests(TestCase):
 
     def test_admin_permissions_author_creation(self):
         content_type = ContentType.objects.get_for_model(Author)
-        permission = Permission.objects.get(content_type=content_type, codename='can_publish_author')
+        permission = Permission.objects.get(content_type=content_type,
+                                            codename='can_publish_author')
 
         admin_user = User.objects.create(username='cersei', is_staff=True)
         admin_user.set_password('12345')
@@ -100,7 +101,8 @@ class MyTests(TestCase):
 
     def test_book_reservation(self):
         book_id = self.book_ins.id
-        url = '/catalog/book/{}/reserve/?book_id={}&book_name={}&book_language' \
+        url = '/catalog/book/{}/reserve/?book_id=' \
+              '{}&book_name={}&book_language' \
               '={}&language_id={}'.format(book_id, self.book1.id,
                                           self.book1.name, self.language,
                                           self.language.id)
@@ -113,9 +115,11 @@ class MyTests(TestCase):
         self.book_ins.save()
 
         book_id = self.book_ins.id
-        url = '/catalog/book/{}/reserve/?book_id={}&book_name={}&book_language' \
+        url = '/catalog/book/{}/reserve/?book_id={}' \
+              '&book_name={}&book_language' \
               '={}&language_id={}'.format(book_id, self.book1.id,
                                           self.book1.name, self.language,
                                           self.language.id)
         response = self.client.get(url)
-        self.assertContains(response, '<h1> You can\'t reserve this copy ! SORRY! but it is unavailable !</h1>')
+        self.assertContains(response, '<h1> You can\'t reserve this copy !'
+                                      ' SORRY! but it is unavailable !</h1>')

@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from django.contrib.auth.mixins import (PermissionRequiredMixin, LoginRequiredMixin)
+from django.contrib.auth.mixins import (PermissionRequiredMixin,
+                                        LoginRequiredMixin)
 
 from .models import (Author, Book, BookInstance)
 from .forms import (ReserveBookForm, CreateBookForm, CreateAuthorForm)
@@ -71,7 +72,8 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = 'catalog/author_info.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(AuthorDetailView, self).get_context_data(*args, **kwargs)
+        context = super(AuthorDetailView, self).get_context_data(*args,
+                                                                 **kwargs)
         context['author'] = self.object
         return context
 
@@ -94,7 +96,8 @@ class BookReserveView(LoginRequiredMixin, generic.edit.UpdateView):
     template_name = 'catalog/reserveBook.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(BookReserveView, self).get_context_data(*args, **kwargs)
+        context = super(BookReserveView, self).get_context_data(*args,
+                                                                **kwargs)
         context['book_language'] = self.request.GET['book_language']
         context['book'] = self.request.GET['book_name']
         context['book_instance'] = self.object
@@ -152,4 +155,3 @@ class BorrowedListView(LoginRequiredMixin, generic.ListView):
             return BookInstance.objects.filter(status='b')
         else:
             return BookInstance.objects.filter(borrower=self.request.user)
-
