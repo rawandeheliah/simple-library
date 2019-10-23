@@ -1,11 +1,12 @@
 # simple-library
 
-**This**django**web app project is an online booking library where you can :*
+**This django web app project is an online booking library where you can :*
 
 * Search and explore books .
 * Reserve any copy if avaiable .
 * Search authors ,and scan info about their lives.
 * Basic login/signup features .
+
 
 **In order to use this django web app :**
 
@@ -26,11 +27,14 @@ in the next steps won't affect existing libraries and so your own projects .
     pip install -r requirements.txt
 
 
+
 **CONGRATS ! We Are done now from setting up our environment , LET'S DIG IN**
 
+
+
 **To run our simple-library web app :**
-1. Setup database with postgresql .
-2. Export environment veriables which they are basically (SECRET_KEY, WSGI_APPLICATION, DATABASE_URL, SENDGRID_API_KEY
+1. **Setup database** with postgresql .
+2. **Export environment veriables** which they are basically (SECRET_KEY, WSGI_APPLICATION, DATABASE_URL, SENDGRID_API_KEY
                                                           EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, AWS_ACCESS_KEY_ID
                                                           AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, CacheControl)
 3. **Make sure you still exist in the base project directory** , then type :
@@ -39,6 +43,7 @@ in the next steps won't affect existing libraries and so your own projects .
 4. **And finally** ! to run it type :
      python3 manage.py runserver
      **jump to any web browser and surf this web app !**
+
 
 
 Don't hesitate and contact me if you encounterd any problem !
