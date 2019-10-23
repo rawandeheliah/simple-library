@@ -41,6 +41,7 @@ jobs:
       - run:
           name: Install PostgreSQL Client
           command: |
+            source env/bin/activate
             sudo apt-get update
 
             sudo apt-get install postgresql-client-9.6
