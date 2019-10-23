@@ -1,0 +1,9 @@
+[
+  {
+    "model": "catalog.Language",
+    "pk": 1,
+    "fields": {
+      "name": "Arabic"
+    }
+  }
+]

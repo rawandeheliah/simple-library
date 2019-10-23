@@ -12,7 +12,9 @@ from .models import (Author, Book, Genre, Language, BookInstance)
 
 
 class MyTests(TestCase):
-    fixtures = ['app_fixtures.json']
+    fixtures = ['book_fixtures.json', 'book_instance_fixtures.json',
+                'author_fixtures.json', 'genre_fixtures.json',
+                'user_fixtures.json', 'language_fixtures.json']
 
     def setUp(self):
         # Every test needs a client.

@@ -1,0 +1,24 @@
+[
+  {
+    "model": "catalog.Book",
+    "pk": 1,
+    "fields": {
+      "name": "bortqal yafa",
+      "summary": "summary",
+      "author": 2,
+      "genres": [1],
+      "languages": [1]
+    }
+  },
+    {
+    "model": "catalog.Book",
+    "pk": 2,
+    "fields": {
+      "name": "book1",
+      "summary": "summary",
+      "author": 1,
+      "genres": [1],
+      "languages": [1]
+    }
+  }
+]

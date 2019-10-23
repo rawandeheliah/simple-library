@@ -1,0 +1,13 @@
+[
+   {
+    "model": "catalog.BookInstance",
+    "pk": 1,
+    "fields": {
+      "status": "a",
+      "due_back_date": "2090-01-01",
+      "borrower": 1,
+      "language": 1,
+      "book": [1]
+    }
+  }
+]
