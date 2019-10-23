@@ -18,6 +18,7 @@ jobs:
         POSTGRES_USER: rawand
         POSTGRES_DB: circle_db
         POSTGRES_PASSWORD: 1
+        
         POSTGRES_PORT: 5432
 
 
