@@ -1,12 +1,13 @@
 # simple-library
 
-**This django web app project is an online booking library where you can :*
+**This django web app project is an online booking library where you can :**
 
 * Search and explore books .
 * Reserve any copy if avaiable .
 * Search authors ,and scan info about their lives.
 * Basic login/signup features .
-
+<br/>
+<br/>
 
 **In order to use this django web app :**
 
@@ -25,12 +26,12 @@ in the next steps won't affect existing libraries and so your own projects .
 4. Install **postgresql** from this link (https://www.postgresql.org/download/)
 5. Install **requiremnts file** using the command :
     pip install -r requirements.txt
+<br/>
+<br/>
 
-
-
-**CONGRATS ! We Are done now from setting up our environment , LET'S DIG IN**
-
-
+**CONGRATS ! We Are done now from setting up our environment , LET'S DIG IN !**
+<br/>
+<br/>
 
 **To run our simple-library web app :**
 1. **Setup database** with postgresql .
@@ -43,7 +44,7 @@ in the next steps won't affect existing libraries and so your own projects .
 4. **And finally** ! to run it type :
      python3 manage.py runserver
      **jump to any web browser and surf this web app !**
-
-
+<br/>
+<br/>
 
 Don't hesitate and contact me if you encounterd any problem !
