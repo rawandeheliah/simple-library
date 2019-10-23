@@ -1,0 +1,9 @@
+[
+   {
+    "model": "catalog.Genre",
+    "pk": 1,
+    "fields": {
+      "name": "drama"
+    }
+  }
+]

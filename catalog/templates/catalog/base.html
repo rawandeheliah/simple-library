@@ -19,7 +19,7 @@
 </form>
 </div>
     <div class="sidenav">
-        <p>{{ user.username }}</p>
+        <p class="user" >{{ user.username }}</p>
         <a href="{% url 'catalog:borrowed' %}">Borrowed books</a>
 		<a href="{% url 'catalog:index' %}">Homepage</a>
 		<a href="{% url 'catalog:author' %}">All authors</a>

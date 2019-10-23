@@ -3,6 +3,8 @@
 {% block title %}Authors Information{% endblock %}
 
 {% block content %}
+
+{% if author %}
 <p>
     {{ author.name }}
 </p>
@@ -28,4 +30,5 @@
 </ul>
 
 </p>
+{% endif %}
 {% endblock %}
