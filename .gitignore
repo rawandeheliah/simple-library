@@ -106,4 +106,4 @@ venv.bak/
 env
 settings/local.py
 .DS_Store
-static
+static/
