@@ -7,7 +7,7 @@
 * Search authors ,and scan info about their lives.
 * Basic login/signup features .
 <br/>
-<br/>
+
 **In order to use this django web app :**
 
 1. First of all **clone or download** this github repository. And change your direcroy to the installed project.
@@ -26,10 +26,11 @@ in the next steps won't affect existing libraries and so your own projects .
 5. Install **requiremnts file** using the command :
     pip install -r requirements.txt
 <br/>
-<br/>
+
 **CONGRATS ! We Are done now from setting up our environment , LET'S DIG IN !**
+
 <br/>
-<br/>
+
 **To run our simple-library web app :**
 1. **Setup database** with postgresql .
 2. **Export environment veriables** which they are basically (SECRET_KEY, WSGI_APPLICATION, DATABASE_URL, SENDGRID_API_KEY
@@ -41,6 +42,7 @@ in the next steps won't affect existing libraries and so your own projects .
 4. **And finally** ! to run it type :
      python3 manage.py runserver
      **jump to any web browser and surf this web app !**
+     
 <br/>
-<br/>
+
 Don't hesitate and contact me if you encounterd any problem !
