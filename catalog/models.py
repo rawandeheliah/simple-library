@@ -88,7 +88,8 @@ class BookInstance(BaseModel):
             raise ValidationError("Date cannot be in the past or today!")
 
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    due_back_date = models.DateField(blank=True, null=True, validators=[validate_date])
+    due_back_date = models.DateField(blank=True, null=True,
+                                     validators=[validate_date])
     book = ChainedManyToManyField(
         Book,
         horizontal=True,

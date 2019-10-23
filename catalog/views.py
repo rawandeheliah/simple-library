@@ -155,4 +155,3 @@ class BorrowedListView(LoginRequiredMixin, generic.ListView):
             return BookInstance.objects.filter(status='b')
         else:
             return BookInstance.objects.filter(borrower=self.request.user)
-
