@@ -28,11 +28,11 @@ class CreateBookForm(forms.ModelForm):
         fields = ('name', 'summary', 'author', 'genres', 'languages')
 
     genres = forms.ModelMultipleChoiceField(queryset=Genre.objects.all(),
-                                            widget=
-                                            forms.CheckboxSelectMultiple)
+                                            widget=forms.CheckboxSelectMultiple
+                                            )
     languages = forms.ModelMultipleChoiceField(queryset=Language.objects.all(),
-                                               widget=
-                                               forms.CheckboxSelectMultiple)
+                                               widget=forms.
+                                               CheckboxSelectMultiple)
 
 
 class CreateAuthorForm(forms.ModelForm):

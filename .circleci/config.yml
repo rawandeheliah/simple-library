@@ -38,14 +38,7 @@ jobs:
           command: |
             source env/bin/activate
             pip3 install tox
-      - run:
-          name: Install PostgreSQL Client
-          command: |
-            source env/bin/activate
-            sudo apt-get update
 
-            sudo apt-get install postgresql-client-9.6
-      - run: whoami
       # run tests!
       # this example uses Django's built-in test-runner
       # other common Python testing frameworks include pytest and nose
